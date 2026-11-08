@@ -1,3 +1,7 @@
+# Errores
+
+Formato: síntoma, causa raíz, solución, cómo evitarlo.
+
 ## E-001 — `apt-get update` falla desde la instalación
 
 - **Estado:** resuelto.
