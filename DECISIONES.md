@@ -30,3 +30,17 @@ Formato: qué se decidió, por qué, y qué alternativa se descartó.
 - **Riesgo asumido:** es el canal de pruebas de Proxmox; en producción se paga.
 - **Nota:** los repos enterprise quedan definidos con `Enabled: false` como
   registro de la decisión, no borrados.
+
+## D-005 — Imagen AlmaLinux 9 GenericCloud, fijada por hash
+
+- **Decisión:** usar la imagen cloud, no la ISO, y registrarla por hash.
+- **Motivo:** cloud-init permite plantilla y clones sin instalador manual.
+- **Registro:** `AlmaLinux-9-GenericCloud-latest.x86_64.qcow2`, sha256
+  `6f94881458dfe966474544b12e86d078d81a600457188045d317b0ce3c3bdca7`.
+
+## D-006 — Direcciones IP fijas documentadas
+
+- **Decisión:** `lab-control` = `192.168.1.50`, `lab-app` = `192.168.1.51`.
+- **Motivo:** la tabla de direcciones vive en el repositorio y es reproducible.
+- **Alternativa descartada:** DHCP con reserva en el router; la reserva no está
+  versionada ni se ve en Git.
