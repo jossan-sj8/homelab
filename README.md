@@ -93,3 +93,4 @@ El servicio de `lab-app` se declara como unidad Quadlet en
 - [ERRORES.md](ERRORES.md) — fallos, causa raíz, cómo evitarlos.
 - [baseline.txt](baseline.txt) — estado del host al cerrar v0.1.
 - [cloud-init/alma9-vendor.yaml](cloud-init/alma9-vendor.yaml) — declaración de la plantilla.
+- [RUNBOOK.md](RUNBOOK.md) — qué hacer cuando algo falla.

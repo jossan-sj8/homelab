@@ -79,3 +79,14 @@ Formato: qué se decidió, por qué, y qué alternativa se descartó.
   direcciones MAC ni detalles de infraestructura de terceros.
 - **Verificación periódica:** `grep -rniE 'BEGIN (OPENSSH|RSA|EC)
   PRIVATE|ghp_|github_pat_' . --exclude-dir=.git`
+
+## D-010 — Snapshot antes de cambios de riesgo; snapshot no es backup
+
+- **Decisión:** tomar `qm snapshot` antes de tocar algo que pueda romper una VM.
+- **Motivo:** el rollback devuelve el disco completo en segundos, sin
+  reconstruir; es la diferencia entre 30 segundos y una hora.
+- **Límite:** el snapshot vive en el mismo almacenamiento que la VM; no protege
+  de la pérdida del disco ni del host. Para eso hace falta backup fuera del
+  equipo (pendiente, con `vzdump`).
+- **Costo:** ocupa espacio en el thin pool mientras exista, y el rollback
+  descarta todo lo escrito después del snapshot.
