@@ -51,3 +51,19 @@ Formato: síntoma, causa raíz, solución, cómo evitarlo.
   `firewall-cmd --add-port=8080/tcp --permanent` y `--reload`.
 - **Cómo evitarlo:** declarar el firewall en la plantilla; y antes de publicar
   cualquier servicio, comprobar `firewall-cmd --list-all` en vez de suponer.
+
+## E-004 — Ruta del snippet mal escrita, detectada al arrancar
+
+- **Estado:** resuelto.
+- **Síntoma:** `qm start 999` falló con `volume
+  'local:snippets/alma9-vender.yaml' does not exist`.
+- **Impacto:** ninguna VM clonada de la plantilla podía arrancar.
+- **Causa raíz:** se escribió `vender` en vez de `vendor` en `--cicustom`. `qm
+  set` guarda la ruta sin validarla y el error aparece recién al generar el disco
+  de cloud-init, en el arranque.
+- **Solución:** `qm set 9000 --cicustom
+  vendor=local:snippets/alma9-vendor.yaml`; comparar `qm config | grep cicustom`
+  contra `ls /var/lib/vz/snippets/` antes de clonar.
+- **Cómo evitarlo:** copiar el nombre desde la salida de `ls`, no escribirlo a
+  mano; y leer la salida de verificación, no sólo comprobar que el comando no
+  falló.

@@ -1,0 +1,7 @@
+#cloud-config
+packages:
+  - firewalld
+  - qemu-guest-agent
+runcmd:
+  - systemctl enable --now firewalld
+  - systemctl enable --now qemu-guest-agent

@@ -6,7 +6,7 @@
 
 ## Fase
 
-4 — servicio contenerizado en `lab-app` y firewall activo.
+5 — servicio contenerizado, firewall declarado en la plantilla.
 
 ## Hecho
 
@@ -18,10 +18,11 @@
 - [x] VM 100 `lab-control` con IP fija 192.168.1.50, SSH por llave, SELinux enforcing.
 - [x] VM 101 `lab-app` con nginx en 8080, verificado desde `lab-control`.
 - [x] `firewalld` activo en `lab-app`; sólo 8080/tcp abierto (E-003).
+- [x] Plantilla con `firewalld` y `qemu-guest-agent` por vendor-data, verificado con clon temporal (E-004).
 
 ## Pendiente
 
-- [ ] Declarar firewall en la plantilla vía vendor-data (D-007).
+- [ ] Alinear `lab-control`, que sigue sin firewall.
 - [ ] Persistencia del contenedor: unidad de systemd + `loginctl enable-linger`.
 - [ ] Ejercicio de rotura y recuperación documentado.
 - [ ] Diagrama de arquitectura.
@@ -29,5 +30,4 @@
 
 ## Próximo paso
 
-Corregir la plantilla para que todo clon nazca con firewall, y verificar clonando
-una VM temporal.
+Que el servicio sobreviva a un reinicio, y comprobarlo reiniciando `lab-app`.
