@@ -21,3 +21,12 @@ Formato: qué se decidió, por qué, y qué alternativa se descartó.
 - **Decisión:** el repo `homelab` es público desde el primer commit.
 - **Motivo:** es el entregable; no contiene datos reales ni secretos.
 - **Regla asociada:** si un archivo necesita un secreto, no entra al repo.
+
+## D-004 — Canal `pve-no-subscription`, no enterprise
+
+- **Decisión:** desactivar los repositorios enterprise y usar el canal gratuito.
+- **Motivo:** no hay suscripción; el canal gratuito recibe los mismos paquetes
+  con algo menos de retraso en pruebas.
+- **Riesgo asumido:** es el canal de pruebas de Proxmox; en producción se paga.
+- **Nota:** los repos enterprise quedan definidos con `Enabled: false` como
+  registro de la decisión, no borrados.
