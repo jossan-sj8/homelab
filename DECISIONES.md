@@ -68,3 +68,14 @@ Formato: qué se decidió, por qué, y qué alternativa se descartó.
   necesarios).
 - **Verificación:** tras `reboot` el contenedor se recrea con otro ID; tras
   `podman kill` vuelve en ~5 s; tras `systemctl --user stop` permanece detenido.
+
+## D-009 — Publicar las direcciones privadas del laboratorio
+
+- **Decisión:** las IPs `192.168.1.0/24` aparecen en el repo tal como son.
+- **Motivo:** son RFC 1918, no enrutables desde internet; hacerlas reales permite
+  verificar el diagrama y reproducir el laboratorio. Un diagrama con direcciones
+  inventadas no documenta nada.
+- **Límite explícito:** nunca se publican IP pública/WAN, llaves, credenciales,
+  direcciones MAC ni detalles de infraestructura de terceros.
+- **Verificación periódica:** `grep -rniE 'BEGIN (OPENSSH|RSA|EC)
+  PRIVATE|ghp_|github_pat_' . --exclude-dir=.git`
