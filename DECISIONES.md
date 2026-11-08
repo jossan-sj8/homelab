@@ -56,3 +56,15 @@ Formato: qué se decidió, por qué, y qué alternativa se descartó.
   lo reemplaza, así que no se pierde la configuración de cada clon.
 - **Alternativa descartada:** hornear `firewalld` en el disco de la plantilla;
   la imagen deja de ser la del vendor y se complica actualizarla.
+
+## D-008 — Servicio contenerizado como unidad de usuario
+
+- **Decisión:** Quadlet (`~/.config/containers/systemd/web.container`) con
+  `Restart=on-failure`, `RestartSec=5` y `loginctl enable-linger`.
+- **Motivo:** el servicio debe existir por declaración, no por comando manual;
+  `linger` hace que la instancia de systemd del usuario arranque sin sesión.
+- **Alternativa descartada:** `podman generate systemd` (en desuso desde Podman
+  4.4) y contenedor rootful con unidad de sistema (más privilegios de los
+  necesarios).
+- **Verificación:** tras `reboot` el contenedor se recrea con otro ID; tras
+  `podman kill` vuelve en ~5 s; tras `systemctl --user stop` permanece detenido.

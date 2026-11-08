@@ -6,7 +6,7 @@
 
 ## Fase
 
-5 — servicio contenerizado, firewall declarado en la plantilla.
+6 — servicio persistente y con política de reinicio.
 
 ## Hecho
 
@@ -18,16 +18,16 @@
 - [x] VM 100 `lab-control` con IP fija 192.168.1.50, SSH por llave, SELinux enforcing.
 - [x] VM 101 `lab-app` con nginx en 8080, verificado desde `lab-control`.
 - [x] `firewalld` activo en `lab-app`; sólo 8080/tcp abierto (E-003).
-- [x] Plantilla con `firewalld` y `qemu-guest-agent` por vendor-data, verificado con clon temporal (E-004).
+- [x] Plantilla con `firewalld` y `qemu-guest-agent` por vendor-data (E-004).
+- [x] Servicio como unidad Quadlet: sobrevive al reinicio y se recupera de fallas (D-008).
 
 ## Pendiente
 
 - [ ] Alinear `lab-control`, que sigue sin firewall.
-- [ ] Persistencia del contenedor: unidad de systemd + `loginctl enable-linger`.
-- [ ] Ejercicio de rotura y recuperación documentado.
 - [ ] Diagrama de arquitectura.
 - [ ] `baseline.txt` del host.
+- [ ] Tag `v0.1` y revisión final del README.
 
 ## Próximo paso
 
-Que el servicio sobreviva a un reinicio, y comprobarlo reiniciando `lab-app`.
+Cerrar el alcance de v0.1: firewall en `lab-control`, diagrama y tag.
