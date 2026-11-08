@@ -1,0 +1,104 @@
+# Baseline — pve-gon — 2026-11-08T16:54:16-03:00
+
+## Versión
+pve-manager/9.2.26/41a0e2e09b9e6f9d (running kernel: 7.0.14-28-pve)
+
+## Memoria
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       3.6Gi        11Gi        48Mi       375Mi        11Gi
+Swap:          8.0Gi       4.0Ki       8.0Gi
+
+## Disco
+Filesystem            Size  Used Avail Use% Mounted on
+udev                  6.8G     0  6.8G   0% /dev
+tmpfs                 1.6G  2.5M  1.6G   1% /run
+/dev/mapper/pve-root   68G   21G   45G  32% /
+tmpfs                 7.8G   46M  7.7G   1% /dev/shm
+efivarfs              150K   84K   62K  58% /sys/firmware/efi/efivars
+tmpfs                 5.0M     0  5.0M   0% /run/lock
+tmpfs                 1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+tmpfs                 7.8G     0  7.8G   0% /tmp
+/dev/nvme0n1p2       1022M  9.1M 1013M   1% /boot/efi
+/dev/fuse             128M   20K  128M   1% /etc/pve
+tmpfs                 1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+tmpfs                 1.6G  4.0K  1.6G   1% /run/user/0
+
+## Red
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+nic0             UP             
+vmbr0            UP             192.168.1.17/24 fe80::9e7b:efff:fec0:b666/64 
+tap101i0         UNKNOWN        
+tap100i0         UNKNOWN        
+
+## Puertos en escucha
+Netid State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess                                                                                                                                      
+udp   UNCONN 0      0            0.0.0.0:68        0.0.0.0:*    users:(("dhclient",pid=846,fd=6))                                                                                                           
+udp   UNCONN 0      0            0.0.0.0:111       0.0.0.0:*    users:(("rpcbind",pid=589,fd=5),("systemd",pid=1,fd=44))                                                                                    
+udp   UNCONN 0      0          127.0.0.1:323       0.0.0.0:*    users:(("chronyd",pid=716,fd=4))                                                                                                            
+udp   UNCONN 0      0               [::]:111          [::]:*    users:(("rpcbind",pid=589,fd=7),("systemd",pid=1,fd=46))                                                                                    
+udp   UNCONN 0      0              [::1]:323          [::]:*    users:(("chronyd",pid=716,fd=5))                                                                                                            
+tcp   LISTEN 0      4096       127.0.0.1:85        0.0.0.0:*    users:(("pvedaemon worke",pid=66637,fd=6),("pvedaemon worke",pid=63209,fd=6),("pvedaemon worke",pid=39586,fd=6),("pvedaemon",pid=1106,fd=6))
+tcp   LISTEN 0      100        127.0.0.1:25        0.0.0.0:*    users:(("master",pid=1046,fd=13))                                                                                                           
+tcp   LISTEN 0      4096         0.0.0.0:111       0.0.0.0:*    users:(("rpcbind",pid=589,fd=4),("systemd",pid=1,fd=43))                                                                                    
+tcp   LISTEN 0      128          0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=911,fd=6))                                                                                                               
+tcp   LISTEN 0      4096               *:8006            *:*    users:(("pveproxy worker",pid=66419,fd=6),("pveproxy worker",pid=64564,fd=6),("pveproxy worker",pid=64356,fd=6),("pveproxy",pid=1119,fd=6)) 
+tcp   LISTEN 0      100            [::1]:25           [::]:*    users:(("master",pid=1046,fd=14))                                                                                                           
+tcp   LISTEN 0      4096            [::]:111          [::]:*    users:(("rpcbind",pid=589,fd=6),("systemd",pid=1,fd=45))                                                                                    
+tcp   LISTEN 0      128             [::]:22           [::]:*    users:(("sshd",pid=911,fd=7))                                                                                                               
+tcp   LISTEN 0      4096               *:3128            *:*    users:(("spiceproxy work",pid=1130,fd=6),("spiceproxy",pid=1129,fd=6))                                                                      
+
+## Servicios activos
+  UNIT                     LOAD   ACTIVE SUB     DESCRIPTION
+  chrony.service           loaded active running chrony, an NTP client/server
+  cron.service             loaded active running Regular background program processing daemon
+  dbus.service             loaded active running D-Bus System Message Bus
+  dm-event.service         loaded active running Device-mapper event daemon
+  getty@tty1.service       loaded active running Getty on tty1
+  ksmtuned.service         loaded active running Kernel Samepage Merging (KSM) Tuning Daemon
+  lxc-monitord.service     loaded active running LXC Container Monitoring Daemon
+  lxcfs.service            loaded active running FUSE filesystem for LXC
+  nfs-blkmap.service       loaded active running pNFS block layout mapping daemon
+  postfix.service          loaded active running Postfix Mail Transport Agent (main/default instance)
+  proxmox-firewall.service loaded active running Proxmox nftables firewall
+  pve-cluster.service      loaded active running The Proxmox VE cluster filesystem
+  pve-firewall.service     loaded active running Proxmox VE firewall
+  pve-ha-crm.service       loaded active running PVE Cluster HA Resource Manager Daemon
+  pve-ha-lrm.service       loaded active running PVE Local HA Resource Manager Daemon
+  pve-lxc-syscalld.service loaded active running Proxmox VE LXC Syscall Daemon
+  pvedaemon.service        loaded active running PVE API Daemon
+  pvefw-logger.service     loaded active running Proxmox VE firewall logger
+  pveproxy.service         loaded active running PVE API Proxy Server
+  pvescheduler.service     loaded active running Proxmox VE scheduler
+  pvestatd.service         loaded active running PVE Status Daemon
+  qmeventd.service         loaded active running PVE Qemu Event Daemon
+  rpcbind.service          loaded active running RPC bind portmap service
+  rrdcached.service        loaded active running Data caching daemon for rrdtool
+  smartmontools.service    loaded active running Self Monitoring and Reporting Technology (SMART) Daemon
+  spiceproxy.service       loaded active running PVE SPICE Proxy Server
+  ssh.service              loaded active running OpenBSD Secure Shell server
+  systemd-journald.service loaded active running Journal Service
+  systemd-logind.service   loaded active running User Login Management
+  systemd-udevd.service    loaded active running Rule-based Manager for Device Events and Files
+  user@0.service           loaded active running User Manager for UID 0
+  watchdog-mux.service     loaded active running Proxmox VE watchdog multiplexer
+  zfs-zed.service          loaded active running ZFS Event Daemon (zed)
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+
+33 loaded units listed.
+
+## Volúmenes LVM
+  VG  #PV #LV #SN Attr   VSize   VFree 
+  pve   1   9   0 wz--n- 237.47g 16.00g
+  LV                VG  Attr       LSize    Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  data              pve twi-aotz-- <141.23g             2.85   1.21                            
+  root              pve -wi-ao----  <69.37g                                                    
+  swap              pve -wi-ao----    8.00g                                                    
+  vm-100-cloudinit  pve Vwi-aotz--    4.00m data        9.38                                   
+  vm-100-disk-0     pve Vwi-aotz--   10.00g data        14.45                                  
+  vm-101-cloudinit  pve Vwi-aotz--    4.00m data        9.38                                   
+  vm-101-disk-0     pve Vwi-aotz--   10.00g data        15.42                                  
+  vm-9000-cloudinit pve Vwi-a-tz--    4.00m data        9.38                                   
+  vm-9000-disk-0    pve Vwi-a-tz--   10.00g data        10.30                                  
