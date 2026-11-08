@@ -36,3 +36,18 @@ Formato: síntoma, causa raíz, solución, cómo evitarlo.
   convertir en plantilla.
 - **Cómo evitarlo:** la verificación es parte del paso, no un extra; un paso no
   está cerrado hasta que su salida se leyó.
+
+## E-003 — Servicio publicado en la LAN sin firewall
+
+- **Estado:** mitigado en `lab-app`; corregido en la plantilla por D-007.
+- **Síntoma:** `curl -I http://192.168.1.51:8080` respondía `200 OK` desde
+  `lab-control` cuando no había firewall; tras instalar y activar `firewalld`,
+  pasó a `No route to host`.
+- **Impacto:** el puerto 8080 estuvo accesible para toda la LAN desde que se
+  creó la VM, sin que nadie lo decidiera.
+- **Causa raíz:** la imagen cloud de AlmaLinux no trae `firewalld` instalado y la
+  plantilla no lo agrega; cada clon nace sin firewall.
+- **Solución:** `dnf install firewalld`, `systemctl enable --now firewalld`,
+  `firewall-cmd --add-port=8080/tcp --permanent` y `--reload`.
+- **Cómo evitarlo:** declarar el firewall en la plantilla; y antes de publicar
+  cualquier servicio, comprobar `firewall-cmd --list-all` en vez de suponer.

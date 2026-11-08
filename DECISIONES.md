@@ -44,3 +44,15 @@ Formato: qué se decidió, por qué, y qué alternativa se descartó.
 - **Motivo:** la tabla de direcciones vive en el repositorio y es reproducible.
 - **Alternativa descartada:** DHCP con reserva en el router; la reserva no está
   versionada ni se ve en Git.
+
+## D-007 — Firewall declarado en la plantilla, vía vendor-data
+
+- **Decisión:** declarar `firewalld` y `qemu-guest-agent` en un archivo
+  vendor-data de cloud-init, aplicado a `tpl-alma9`.
+- **Motivo:** el defecto está en el molde. Corregir `lab-app` a mano arregla una
+  VM; corregir la plantilla arregla todas las futuras.
+- **Por qué vendor-data y no user-data:** Proxmox genera el user-data con
+  `ciuser`, `sshkeys` e `ipconfig0`; el vendor-data se **fusiona** encima y no
+  lo reemplaza, así que no se pierde la configuración de cada clon.
+- **Alternativa descartada:** hornear `firewalld` en el disco de la plantilla;
+  la imagen deja de ser la del vendor y se complica actualizarla.
